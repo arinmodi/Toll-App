@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/lightBlack"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/toll_app"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/orange"
+        android:layout_above="@+id/main"
+        android:layout_marginBottom="50dp"
+        android:textSize="22sp"
+        android:textStyle="bold |italic"
+        android:letterSpacing="0.1" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_centerInParent="true"
+        app:cardBackgroundColor="@color/lightBlack"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/white"
+        app:cardElevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="30dp"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="@string/server_ip_address"
+                android:textSize="18sp"
+                android:layout_marginBottom="30dp"
+                android:letterSpacing="0.1" />
+
+
+            <EditText
+                android:id="@+id/ip_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/inputbox"
+                android:backgroundTint="@color/white"
+                android:hint="@string/enter_the_ip_address"
+                android:inputType="text"
+                android:isScrollContainer="true"
+                android:paddingVertical="15dp"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="#7A7979"
+                android:textSize="16sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/orange"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/connect"
+                    android:background="?android:selectableItemBackground"
+                    android:clickable="true"
+                    app:cardElevation="10dp"
+                    android:layout_width="match_parent"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="20dp"
+                    android:layout_height="wrap_content"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/connect"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1" />
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

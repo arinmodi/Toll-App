@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBlack"
+    tools:context=".printer_selection">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="10dp"
+                app:cardBackgroundColor="@color/lightBlack"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                app:strokeColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:gravity="center"
+                        android:letterSpacing="0.1"
+                        android:text="@string/printer_selection"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@color/white">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/autoText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:text="@string/select_the_printer"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/next"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="20dp"
+                        app:cardBackgroundColor="@color/orange"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:letterSpacing="0.1"
+                                android:text="@string/next"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/loader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/main"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/searching_devices"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <com.github.ybq.android.spinkit.SpinKitView
+                        android:id="@+id/spin_kit"
+                        style="@style/SpinKitView.Circle"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="50dp"
+                        android:layout_marginVertical="20dp"
+                        app:SpinKit_Color="@color/colorBlue" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/loader_connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/connecting_wait"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/loader2"
+                style="@style/SpinKitView.Circle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginVertical="20dp"
+                app:SpinKit_Color="@color/colorBlue" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

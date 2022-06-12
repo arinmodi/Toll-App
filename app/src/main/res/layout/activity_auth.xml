@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBlack"
+    tools:context=".auth">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="10dp"
+            app:cardBackgroundColor="@color/lightBlack"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:strokeColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:letterSpacing="0.1"
+                    android:text="@string/verification"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/u_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/inputbox"
+                    android:backgroundTint="@color/white"
+                    android:hint="@string/enter_the_your_username"
+                    android:inputType="text"
+                    android:isScrollContainer="true"
+                    android:paddingVertical="15dp"
+                    android:paddingStart="20dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/lightBlack"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/inputbox"
+                    android:backgroundTint="@color/white"
+                    android:hint="@string/enter_your_password"
+                    android:inputType="textPassword"
+                    android:isScrollContainer="true"
+                    android:paddingVertical="15dp"
+                    android:paddingStart="20dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/lightBlack"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    app:cardBackgroundColor="@color/orange"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="10dp">
+
+                    <RelativeLayout
+                        android:id="@+id/submit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:letterSpacing="0.1"
+                            android:text="@string/submit"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/loader"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="20dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/checking_wait"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp" />
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.Circle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginVertical="20dp"
+                app:SpinKit_Color="@color/colorBlue" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

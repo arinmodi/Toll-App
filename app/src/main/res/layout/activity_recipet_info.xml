@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBlack"
+    tools:context=".recipet_info">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="10dp"
+                app:cardBackgroundColor="@color/lightBlack"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                app:strokeColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="30dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:gravity="center"
+                        android:letterSpacing="0.1"
+                        android:text="@string/receipt_info"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/v_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/inputbox"
+                        android:backgroundTint="@color/white"
+                        android:hint="@string/enter_the_vehicle_no"
+                        android:inputType="text"
+                        android:isScrollContainer="true"
+                        android:paddingVertical="15dp"
+                        android:paddingStart="20dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/lightBlack"
+                        android:textSize="16sp" />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/lane"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:boxBackgroundColor="@color/white">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/lane_auto"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:text="@string/select_lane"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/lightBlack"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/v_type"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:boxBackgroundColor="@color/white">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/v_type_autp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:text="@string/select_vehicle_type"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/lightBlack"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/j_type"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:boxBackgroundColor="@color/white">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/j_type_auto"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:text="@string/select_journey_type"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/lightBlack"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/v_wt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.6"
+                            android:background="@drawable/inputbox"
+                            android:backgroundTint="@color/white"
+                            android:isScrollContainer="true"
+                            android:paddingVertical="15dp"
+                            android:paddingStart="20dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/lightBlack"
+                            android:textSize="16sp"
+                            tools:ignore="Deprecated" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
+                            android:gravity="center"
+                            android:letterSpacing="0.1"
+                            android:text="KG"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:weightSum="2">
+
+                        <EditText
+                            android:id="@+id/v_wt_overload"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.6"
+                            android:background="@drawable/inputbox"
+                            android:backgroundTint="@color/white"
+                            android:hint="@string/enter_the_vehicle_wight"
+                            android:inputType="number"
+                            android:isScrollContainer="true"
+                            android:paddingVertical="15dp"
+                            android:paddingStart="20dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/lightBlack"
+                            android:textSize="16sp"
+                            tools:ignore="Deprecated" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
+                            android:gravity="center"
+                            android:letterSpacing="0.1"
+                            android:text="KG"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="20dp"
+                        app:cardBackgroundColor="@color/orange"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="10dp">
+
+                        <RelativeLayout
+                            android:id="@+id/print"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:letterSpacing="0.1"
+                                android:text="@string/print"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/loader_process"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/loader_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/processing_wait"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/receipt_loader"
+                style="@style/SpinKitView.Circle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginVertical="20dp"
+                app:SpinKit_Color="@color/colorBlue" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</RelativeLayout>

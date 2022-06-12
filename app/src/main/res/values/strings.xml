@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Toll_APP</string>
+    <string name="enter_the_ip_address">Enter the IP Address</string>
+    <string name="next">NEXT</string>
+    <string name="toll_app">TOLL APP</string>
+    <string name="select_the_printer">Select the Printer</string>
+    <string name="server_ip_address">Server IP Address</string>
+    <string name="connect">CONNECT</string>
+    <string name="printer_selection">Printer Selection</string>
+    <string name="receipt_info">Receipt Info</string>
+    <string name="print">PRINT</string>
+    <string name="select_lane">Select Lane</string>
+    <string name="enter_the_vehicle_no">Enter the Vehicle No</string>
+    <string name="select_vehicle_type">Select Vehicle Type</string>
+    <string name="select_journey_type">Select Journey Type</string>
+    <string name="enter_the_vehicle_wight">Enter vehicle wight</string>
+    <string name="name">Name</string>
+    <string name="searching_devices">Searching Devices…</string>
+    <string name="verification">Verification</string>
+    <string name="enter_the_your_username">Enter the your username</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="submit">SUBMIT</string>
+    <string name="checking_wait">Checking Wait…</string>
+    <string name="connecting_wait">Connecting Wait…</string>
+    <string name="processing_wait">Processing Wait...</string>
+    <string name="toll_application">Toll Application</string>
+</resources>
