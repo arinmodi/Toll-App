@@ -40,14 +40,14 @@
 
         </activity>
         <activity
-            android:name=".auth"
+            android:name=".AuthenticateUser"
             android:exported="false" />
         <activity
-            android:name=".recipet_info"
+            android:name=".ReceiptInfo"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".printer_selection"
+            android:name=".PrinterSelection"
             android:exported="false" />
         <activity
             android:name=".MainActivity">

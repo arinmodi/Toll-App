@@ -1,6 +1,7 @@
 package com.example.toll_app;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -8,7 +9,6 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,7 +22,6 @@ import android.os.Looper;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
@@ -30,13 +29,12 @@ import android.widget.Toast;
 import com.google.android.material.card.MaterialCardView;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public class printer_selection extends AppCompatActivity {
+public class PrinterSelection extends AppCompatActivity {
 
     BluetoothAdapter mBluetoothAdapter;
     AutoCompleteTextView printer;
@@ -111,9 +109,7 @@ public class printer_selection extends AppCompatActivity {
             }
         });
 
-        printer.setOnItemClickListener((adapterView, view, i, l) -> {
-                bt[0] = dvs.get(i);
-        });
+        printer.setOnItemClickListener((adapterView, view, i, l) -> bt[0] = dvs.get(i));
 
         loadData();
     }
@@ -162,6 +158,7 @@ public class printer_selection extends AppCompatActivity {
         }
     };
 
+    @RequiresApi(api = Build.VERSION_CODES.S)
     private void checkForBluetoothPermission() {
         String[] permissions = new String[2];
         permissions[0] = Manifest.permission.BLUETOOTH_CONNECT;
@@ -275,15 +272,13 @@ public class printer_selection extends AppCompatActivity {
     }
 
     private void hideLoader(){
-        runOnUiThread(() -> {
-            loader_connection.setVisibility(View.GONE);
-        });
+        runOnUiThread(() -> loader_connection.setVisibility(View.GONE));
     }
 
     private void connectionEstablished(Context context, BluetoothDevice device, BluetoothSocket mmSocket){
         Looper.prepare();
         Toast.makeText(context, "Connected", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(context,auth.class);
+        Intent intent = new Intent(context, AuthenticateUser.class);
         String ip = getIntent().getStringExtra("ip");
         intent.putExtra("selected",(Parcelable) device);
         intent.putExtra("ip", ip);
@@ -291,7 +286,7 @@ public class printer_selection extends AppCompatActivity {
         hideLoader();
         if(mmSocket != null){
             Socket.setSocket(mmSocket);
-            sp.edit().putString("lastPrinter",printer.getText().toString()).commit();
+            sp.edit().putString("lastPrinter",printer.getText().toString()).apply();
             context.startActivity(intent);
         }
     }

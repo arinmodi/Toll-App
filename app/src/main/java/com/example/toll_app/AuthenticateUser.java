@@ -3,7 +3,6 @@ package com.example.toll_app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.bluetooth.BluetoothDevice;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,7 +20,6 @@ import com.google.android.material.card.MaterialCardView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -31,11 +29,10 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class auth extends AppCompatActivity {
+public class AuthenticateUser extends AppCompatActivity {
 
     MaterialCardView loader;
     JSONArray lane;
-    Context context = this;
     String booth;
     SharedPreferences sp;
 
@@ -119,21 +116,21 @@ public class auth extends AppCompatActivity {
                                 for (int i = 0; i < lane.length(); i++) {
                                     lanes[i] = lane.getString(i);
                                 }
-                                Intent intent = new Intent(this, recipet_info.class);
+                                Intent intent = new Intent(this, ReceiptInfo.class);
                                 intent.putExtra("selected", (Parcelable) mmDevice);
                                 intent.putExtra("ip", ip);
                                 intent.putExtra("lane", lanes);
                                 intent.putExtra("username", uname);
                                 intent.putExtra("booth", booth);
-                                Toast.makeText(auth.this, "Authentication SUCCESS", Toast.LENGTH_SHORT).show();
-                                sp.edit().putString("username", uname).commit();
-                                sp.edit().putString("password", pass).commit();
+                                Toast.makeText(AuthenticateUser.this, "Authentication SUCCESS", Toast.LENGTH_SHORT).show();
+                                sp.edit().putString("username", uname).apply();
+                                sp.edit().putString("password", pass).apply();
                                 startActivity(intent);
                             } else {
-                                Toast.makeText(auth.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AuthenticateUser.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
                             }
                         }catch (Exception e){
-                            Toast.makeText(auth.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AuthenticateUser.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

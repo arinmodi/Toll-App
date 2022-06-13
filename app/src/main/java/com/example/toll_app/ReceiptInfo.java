@@ -1,6 +1,7 @@
 package com.example.toll_app;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -17,7 +18,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -32,16 +32,11 @@ import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -52,7 +47,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class recipet_info extends AppCompatActivity {
+public class ReceiptInfo extends AppCompatActivity {
 
     BluetoothDevice mmDevice;
 
@@ -125,6 +120,7 @@ public class recipet_info extends AppCompatActivity {
         getData();
     }
 
+    // print the data
     private void print_data(String ticketNo, String date) {
         bs = Socket.getSocket();
         BluPrintsPrinter pl = new BluPrintsPrinter(bs);
@@ -178,13 +174,14 @@ public class recipet_info extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("Error : ", e.toString());
             Toast.makeText(this, "Connection Lost", Toast.LENGTH_LONG).show();
-            Intent printer = new Intent(this, printer_selection.class);
+            Intent printer = new Intent(this, PrinterSelection.class);
             startActivity(printer);
             finish();
         }
         loader.setVisibility(View.GONE);
     }
 
+    // get the fees amount from selected journey type and vehicle type
     private void getAmount(String j, String v) {
         fees = amount.get(j + "-" + v);
         if (fees == null) {
@@ -195,6 +192,7 @@ public class recipet_info extends AppCompatActivity {
         }
     }
 
+    // get the vehicle data from the local server
     private void getData() {
         String ip = getIntent().getStringExtra("ip");
         String tollInfo = "http://" + ip + ":8000/api/tollplazafeerules/fetch";
@@ -202,7 +200,6 @@ public class recipet_info extends AppCompatActivity {
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
-        final boolean[] flag = {true};
 
         executor.execute(new Runnable() {
             String[] jt;
@@ -287,37 +284,34 @@ public class recipet_info extends AppCompatActivity {
 
 
                 } catch (Exception e) {
-                    flag[0] = false;
                     e.printStackTrace();
                 } finally {
                     urlConnection.disconnect();
                     urlConnection1.disconnect();
                 }
 
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
+                handler.post(() -> {
 
-                        if (lane.length != 0) {
-                            ArrayAdapter adapter = new ArrayAdapter(recipet_info.this, R.layout.drop_down_item, lane);
-                            laneU.setAdapter(adapter);
-                        }
+                    if (lane.length != 0) {
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(ReceiptInfo.this, R.layout.drop_down_item, lane);
+                        laneU.setAdapter(adapter);
+                    }
 
-                        if (vt.length != 0) {
-                            ArrayAdapter adapter1 = new ArrayAdapter(recipet_info.this, R.layout.drop_down_item, vt);
-                            vtU.setAdapter(adapter1);
-                        }
+                    if (vt.length != 0) {
+                        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(ReceiptInfo.this, R.layout.drop_down_item, vt);
+                        vtU.setAdapter(adapter1);
+                    }
 
-                        if (jt.length != 0) {
-                            ArrayAdapter adapter2 = new ArrayAdapter(recipet_info.this, R.layout.drop_down_item, jt);
-                            jtU.setAdapter(adapter2);
-                        }
+                    if (jt.length != 0) {
+                        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(ReceiptInfo.this, R.layout.drop_down_item, jt);
+                        jtU.setAdapter(adapter2);
                     }
                 });
             }
         });
     }
 
+    // send data to local server
     private void sendAPIData() {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         String ip = getIntent().getStringExtra("ip");
@@ -368,16 +362,17 @@ public class recipet_info extends AppCompatActivity {
                     handler.post(() -> {
                         if (finalFlag) {
                             print_data(finalTicketNo, finalDate);
-                            Toast.makeText(recipet_info.this, "Transaction Added", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ReceiptInfo.this, "Transaction Added", Toast.LENGTH_LONG).show();
                         } else {
                             loader.setVisibility(View.GONE);
-                            Toast.makeText(recipet_info.this, "Transaction Failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ReceiptInfo.this, "Transaction Failed", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
         );
     }
 
+    // check is a printer or not
     private boolean isAPrinter(BluetoothDevice device) {
         int printerMask = 0b000001000000011010000000;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
@@ -388,6 +383,7 @@ public class recipet_info extends AppCompatActivity {
         return (fullCod & printerMask) == printerMask;
     }
 
+    // validate the user input
     private boolean checkValidation() {
         EditText v_no = findViewById(R.id.v_no);
         TextView v_wt = findViewById(R.id.v_wt);
@@ -412,7 +408,7 @@ public class recipet_info extends AppCompatActivity {
                 || vehicleWeight.getText().length() <= 0) {
             return false;
         } else {
-            sp.edit().putString("JT", j_type.getText().toString()).commit();
+            sp.edit().putString("JT", j_type.getText().toString()).apply();
             return true;
         }
     }
@@ -427,6 +423,7 @@ public class recipet_info extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.S)
     private void checkForBluetoothPermission() {
         String[] permissions = new String[2];
         permissions[0] = Manifest.permission.BLUETOOTH_CONNECT;
@@ -436,7 +433,7 @@ public class recipet_info extends AppCompatActivity {
                 == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN)
                 == PackageManager.PERMISSION_GRANTED
         ) {
-
+            //permission granted
         } else {
             ActivityCompat.requestPermissions(
                     this,

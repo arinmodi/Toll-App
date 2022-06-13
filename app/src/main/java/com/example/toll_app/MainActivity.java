@@ -10,13 +10,11 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -158,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.post(() -> {
                     if(flag[0] && !result.equals(" ")){
                         Log.e("Data : ", result.toString());
-                        Intent printerSelection = new Intent(MainActivity.this,printer_selection.class);
+                        Intent printerSelection = new Intent(MainActivity.this, PrinterSelection.class);
                         try{
                             JSONObject object = new JSONObject(result.toString());
                             String booth = object.getString("booth");
