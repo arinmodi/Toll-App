@@ -14,7 +14,7 @@
 
   The <b>Main Objevtive</b> of Toll App is to prvoide a <b>Mobile App</b> to employees who are working at the <b>Highway Tolls</b> to print the <b>receipt from mobile</b> with <b>custom data</b> and <b>save the data to local server</b>.    
   
-  This Project is made during <b>Remote Internship</b> at <b>Sinplay Pvt Ltd</b>. I am selected as <b>Android Developer</b> and responsible to provide to <b>end-to-end working application</b> to clinet. 
+  The App is developed during <b>Remote Internship</b> at <b>Sinplay Pvt Ltd</b>. I am selected as an<b>Android Developer</b> and responsible to provide <b>end-to-end working application</b> to clinet. 
 </p>
 
 <br>
@@ -59,4 +59,16 @@ Receipt Info               |  Output
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/61725413/173307135-256e0a71-c08a-4a7e-8009-355fc298e4f6.png" width=500>
+</p>
+
+
+<br><br>
+
+<h2><p align="center">
+  Letter of Recommendation
+</p></h2>
+
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/61725413/173373532-ad048945-554d-4b97-8761-c22ffe2e13e7.png" width=500>
 </p>
