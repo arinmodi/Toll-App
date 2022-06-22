@@ -52,6 +52,22 @@ Receipt Info               |  Output
 
 <br>
 
+## :construction: Challanges Faced : 
+
+- During development of this project, I need to find the available bluetooth devices. It was easy to find the devices which was the previsoly connected but search for new device is kind of difficult. So I looked on the Android Documentation and found a solution that I have to enable the Location Permission and need to make an broadcast receiver that will notified whenever new device found. Also, I have to call the startDiscovery method in order to find devices.
+
+- Another chanllange is actully find that connected device is printer or not. So, I solved that by doing bitwise-and opeartion between printer mask and selected bluetooth device cod. 
+
+<br>
+
+## :rocket: Future Scope : 
+
+- We can make this project more generalized instead of specific to toll plaza. We can apply this concept at every place which needs to generate the reciept for customers. For example it is very useful at place like supermarket, shopping mall etc.
+
+- We can reduce the number of computers which are used just for the printing reciepts. It will very handy for the employees also. We can make the app which will print the given fields. Also they can set the predefined format of reciept.  
+
+<br><br>
+
 <h2><p align="center">
   Internship Certificate
 </p></h2>
