@@ -37,6 +37,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -125,7 +126,7 @@ public class ReceiptInfo extends AppCompatActivity {
         bs = Socket.getSocket();
         BluPrintsPrinter pl = new BluPrintsPrinter(bs);
         System.out.println(date);
-        String text = "National Highway Authority Of India\n" + sp.getString("company", "") + " Toll Plaza\n";
+        String text = "JP Associates";
         try {
             bs.getOutputStream().flush();
             pl.POS_ThreeInchCENTER();
@@ -133,9 +134,13 @@ public class ReceiptInfo extends AppCompatActivity {
             pl.print(" \n");
             pl.setFontType(BluPrintsPrinter.FONT_003);
             pl.setFontType(BluPrintsPrinter.TEXT_ALIGNMENT_LEFT);
-            String data = "Ticket No         : \t" + ticketNo + "\n"
+            String data = ""
+                        + "Toll Plaza Name   : \tDadinod at KM 85.00"
+                        + "Section           : \tGorakhpur-Varanasi NH24"
+                        + "Ticket No         : \t" + ticketNo + "\n"
                         + "Lane              : \t" + laneU.getText().toString() + "\n"
                         + "Date and Time     : \t" + date + "\n"
+                        + "Valid Till        : \t" + date + "\n"
                         + "Vehicle No        : \t" + vNo.getText().toString() + "\n"
                         + "Type of Vehicle   : \t" + vtU.getText().toString() + "\n"
                         + "Type of Journey   : \t" + jtU.getText().toString() + "\n"
