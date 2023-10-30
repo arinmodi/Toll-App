@@ -125,13 +125,12 @@ public class ReceiptInfo extends AppCompatActivity {
     private void print_data(String ticketNo, String date) {
         bs = Socket.getSocket();
         BluPrintsPrinter pl = new BluPrintsPrinter(bs);
-        System.out.println(date);
+
         String text = "JP Associates";
         try {
             bs.getOutputStream().flush();
-            pl.POS_ThreeInchCENTER();
             pl.print(text);
-            pl.print(" \n");
+            pl.print("\n");
             pl.setFontType(BluPrintsPrinter.FONT_003);
             pl.setFontType(BluPrintsPrinter.TEXT_ALIGNMENT_LEFT);
             String data = ""
@@ -161,22 +160,26 @@ public class ReceiptInfo extends AppCompatActivity {
             pl.print(" \n");
             String data3 = "Standard Weight of Vehicle : \t" + vWt.getText().toString() + " KG\n"
                     + "Class Weight of Vehicle    : \t" + "0 KG\n"
-                    + "Actual Weight of Vehicle   : \t" + "0 kg\n"
-                    + "Overweight of Vehicle Fees : \t" + "0 Rs\n";
+                    + "Actual Weight of Vehicle   : \t" + vWt.getText().toString() + "kg\n"
+                    + "Overweight of Vehicle Fees : \t" + "0 Rs\n"
+                    + "Fees              : \t" + fees + "\n";
             pl.setFontType(BluPrintsPrinter.FONT_003);
             pl.setFontType(BluPrintsPrinter.TEXT_ALIGNMENT_LEFT);
             pl.POS_FontThreeInchLEFT();
             pl.print(data3);
             pl.print(" \n");
-            pl.setFontType(BluPrintsPrinter.FONT_003);
+            pl.setFontType(BluPrintsPrinter.FONT_002);
             pl.setFontType(BluPrintsPrinter.TEXT_ALIGNMENT_LEFT);
             pl.print(dots);
             pl.print(" \n");
-            String data4 = "24 X 7 Help Line 1033 \n All Toll Payments are FastTag Only \n Note: Double Fare Charged Due to non compliance of FastTag Rule \n Wish You Happy and Safe Journey\n";
+            String data4 = "All Toll payments via FASTags only w.e.f 15th \n December 2019 \n \"DOUBLE FEE TO BE CHARGED FROM NON-FASTAG USERS, \n  IF THEY PASS FROM FASTAG LANE \" \n Receipt Valid for Khedi Toll Plaza Only  \n Wish You Safe & Happy Journey\n";
             pl.POS_ThreeInchCENTER();
             pl.print(data4);
-            pl.setLineFeed(4);
-        } catch (Exception e) {
+            pl.POS_ThreeInchCENTER();
+        }
+
+
+        catch (Exception e) {
             Log.e("Error : ", e.toString());
             Toast.makeText(this, "Connection Lost", Toast.LENGTH_LONG).show();
             Intent printer = new Intent(this, PrinterSelection.class);
